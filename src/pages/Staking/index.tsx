@@ -41,7 +41,7 @@ export default () => {
   const balance = useKupadBalance();
   const [whitelisted, setWhitelisted] = useState(true);
 
-  const [kupadPrice, setKupadPrice] = useState(0.2);
+  const [kupadPrice, setKupadPrice] = useState(0.0008554);
   const [totalSupply, setTotalSupply] = useState(1500000);
   const [displayType, setDisplayType] = useState(3600 * 24);
   const dismissResultModal = () => {
@@ -65,6 +65,11 @@ export default () => {
     },
   }));
   const classes = useStyles();
+  function openTab() {
+    window.open(
+      "https://koffeeswap.exchange/#/swap?outputCurrency=0x627f63299d9df3d4e22132932da577bb08ca0988"
+    );
+  }
   const Stake = async () => {
     if (signer && contract && whitelisted && tokenContract) {
       setLoading(true);
@@ -207,7 +212,7 @@ export default () => {
             <div className="stake-container">
               <div className="kpd-section1-display-title">End in</div>
               <div className="kpd-section1-display-info">
-                Jun 22, 2021 5:00 PM
+                Jun 22, 2022 5:00 PM
               </div>
             </div>
             <div className="divider-row" />
@@ -220,11 +225,21 @@ export default () => {
             <div className="divider-row" />
             <div className="stake-container">
               <div className="kpd-section1-display-title">TVL</div>
-              <div className="kpd-section1-display-info">
-                ${" "}
-                {account
-                  ? parseFloat(toHumanNumber(totalDeposit)).toFixed(2)
-                  : "0"}{" "}
+              <div className="tvl-container">
+                <div className="kpd-section1-display-info">
+                  {account
+                    ? parseFloat(toHumanNumber(totalDeposit)).toFixed(2)
+                    : "0"}{" "}
+                  KUPAD
+                </div>
+                <div className="kpd-section1-display-info">
+                  ${" "}
+                  {account
+                    ? (
+                        parseFloat(toHumanNumber(totalDeposit)) * kupadPrice
+                      ).toFixed(5)
+                    : "0"}
+                </div>
               </div>
             </div>
             <Button className="btn-view-kcc">View on KCC</Button>
@@ -265,7 +280,14 @@ export default () => {
                 : "0"}{" "}
               KUPAD
             </div>
-            <div className="staked-usd-label">$ 457.89</div>
+            <div className="staked-usd-label">
+              ${" "}
+              {account && userInfo !== undefined
+                ? (
+                    parseFloat(toHumanNumber(userInfo.amount)) * kupadPrice
+                  ).toFixed(5)
+                : "0"}
+            </div>
             <div className="input-container">
               <Button className="btn-stake" onClick={Stake}>
                 Stake
@@ -299,7 +321,15 @@ export default () => {
                 : "0"}{" "}
               KUPAD
             </div>
-            <div className="staked-usd-label topSpacing10">$ 457.89</div>
+            <div className="staked-usd-label topSpacing10">
+              ${" "}
+              {account && userInfo !== undefined
+                ? (
+                    parseFloat(toHumanNumber(userInfo.pendingRewards)) *
+                    kupadPrice
+                  ).toFixed(5)
+                : "0"}
+            </div>
             <div className="topSpacing10" />
             <Button className="btn-stake" onClick={Claim}>
               Claim
@@ -362,7 +392,7 @@ export default () => {
                   {account
                     ? (
                         parseFloat(toHumanNumber(totalDeposit)) * kupadPrice
-                      ).toFixed(2)
+                      ).toFixed(5)
                     : "0"}
                 </div>
               </div>
@@ -385,7 +415,7 @@ export default () => {
                         parseFloat(toHumanNumber(rewardsPerBlock)) *
                         6677 *
                         kupadPrice
-                      ).toFixed(2)
+                      ).toFixed(5)
                     : "0"}
                 </div>
               </div>
@@ -397,7 +427,9 @@ export default () => {
           </div>
 
           <div className="liquidity-container topSpacing20">
-            <Button className="btn-buy">Buy KUPAD</Button>
+            <Button className="btn-buy" onClick={openTab}>
+              Buy KUPAD
+            </Button>
             <Button className="btn-liquidity">+ Add Liquidity</Button>
           </div>
         </div>

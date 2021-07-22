@@ -47,7 +47,7 @@ export default () => {
                 <a href="/">Home</a>
               </li>
               <li>
-                <a href="https://explorer.kcc.io/en/token/0x85eb19c76a1cd461ecb62b0f97fdf67cbef41c1a">
+                <a href="https://explorer.kcc.io/en/token/0x627f63299d9df3d4e22132932da577bb08ca0988">
                   Contract
                 </a>
               </li>
