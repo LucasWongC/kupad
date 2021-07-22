@@ -8,15 +8,15 @@ import { NetworkConnector } from "./NetworkConnector";
 export const NETWORK_URLS: {
   [chainId: number]: string;
 } = {
-  3: "https://ropsten.infura.io/v3/72123c5a204b4cdeb49ef31ad0aa1729",
+  321: "https://ropsten.infura.io/v3/72123c5a204b4cdeb49ef31ad0aa1729",
 };
 
-const SUPPORTED_CHAIN_IDS = [3];
+const SUPPORTED_CHAIN_IDS = [321];
 const POLLING_INTERVAL = 12000;
 
 export const network = new NetworkConnector({
   urls: NETWORK_URLS,
-  defaultChainId: 3,
+  defaultChainId: 321,
 });
 
 let networkLibrary: Web3Provider | undefined;
