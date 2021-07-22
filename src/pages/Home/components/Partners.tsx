@@ -21,9 +21,9 @@ export default () => (
         <div className="partner-bg">
           <img src={Sc} className="img-fluid" alt="phi" />
         </div>
-        <div className="partner-bg">
+        {/* <div className="partner-bg">
           <img src={Pc} className="img-fluid" alt="phi" />
-        </div>
+        </div> */}
       </div>
     </div>
   </div>

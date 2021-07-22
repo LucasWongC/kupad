@@ -338,7 +338,7 @@ export default () => {
             <div className="stake-container reponsive-direction-reverse">
               <div className="kpd-pool-title">APY</div>
               <div className="kpd-pool-info kpd-stakview">
-                {account
+                {account && parseFloat(toHumanNumber(totalDeposit)) > 0
                   ? (
                       (5 * displayType) /
                       3 /
