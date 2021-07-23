@@ -43,7 +43,7 @@ export default () => {
 
   const [kupadPrice, setKupadPrice] = useState(0.0008554);
   const [totalSupply, setTotalSupply] = useState(1500000);
-  const [displayType, setDisplayType] = useState(3600 * 24);
+  const [displayType, setDisplayType] = useState(1);
   const dismissResultModal = () => {
     setSuccessMsg(undefined);
     setErrorMsg(undefined);
@@ -68,6 +68,11 @@ export default () => {
   function openTab() {
     window.open(
       "https://koffeeswap.exchange/#/swap?outputCurrency=0x627f63299d9df3d4e22132932da577bb08ca0988"
+    );
+  }
+  function openKCC() {
+    window.open(
+      "https://explorer.kcc.io/en/address/0x91d42458bef7e904af19dcc730abff40862bbaf0"
     );
   }
   const Stake = async () => {
@@ -104,6 +109,18 @@ export default () => {
         setErrorMsg("Stake failed");
       }
       setLoading(false);
+    }
+  };
+  const getFromDisplayType = (value: number) => {
+    switch (value) {
+      case 1:
+        return "daily";
+      case 1 * 30:
+        return "monthly";
+      case 1 * 30 * 12:
+        return "yearly";
+      default:
+        return "daily";
     }
   };
   const setMax = async () => {
@@ -232,17 +249,19 @@ export default () => {
                     : "0"}{" "}
                   KUPAD
                 </div>
-                <div className="kpd-section1-display-info">
+                {/* <div className="kpd-section1-display-info">
                   ${" "}
                   {account
                     ? (
                         parseFloat(toHumanNumber(totalDeposit)) * kupadPrice
                       ).toFixed(5)
                     : "0"}
-                </div>
+                </div> */}
               </div>
             </div>
-            <Button className="btn-view-kcc">View on KCC</Button>
+            <Button className="btn-view-kcc" onClick={openKCC}>
+              View on KCC
+            </Button>
           </div>
         </div>
 
@@ -280,14 +299,14 @@ export default () => {
                 : "0"}{" "}
               KUPAD
             </div>
-            <div className="staked-usd-label">
+            {/* <div className="staked-usd-label">
               ${" "}
               {account && userInfo !== undefined
                 ? (
                     parseFloat(toHumanNumber(userInfo.amount)) * kupadPrice
                   ).toFixed(5)
                 : "0"}
-            </div>
+            </div> */}
             <div className="input-container">
               <Button className="btn-stake" onClick={Stake}>
                 Stake
@@ -321,7 +340,7 @@ export default () => {
                 : "0"}{" "}
               KUPAD
             </div>
-            <div className="staked-usd-label topSpacing10">
+            {/* <div className="staked-usd-label topSpacing10">
               ${" "}
               {account && userInfo !== undefined
                 ? (
@@ -329,7 +348,7 @@ export default () => {
                     kupadPrice
                   ).toFixed(5)
                 : "0"}
-            </div>
+            </div> */}
             <div className="topSpacing10" />
             <Button className="btn-stake" onClick={Claim}>
               Claim
@@ -345,7 +364,7 @@ export default () => {
                 <FormControl className={classes.formControl}>
                   <Select
                     className="dropbox-container"
-                    defaultValue={3600 * 24}
+                    defaultValue={1}
                     classes={{
                       root: classes.selectEmpty,
                       icon: classes.whiteColor,
@@ -354,23 +373,26 @@ export default () => {
                     disableUnderline
                     inputProps={{ "aria-label": "Without label" }}
                   >
-                    <MenuItem value={3600 * 24}>Daily</MenuItem>
-                    <MenuItem value={3600 * 24 * 30}>Monthly</MenuItem>
-                    <MenuItem value={3600 * 24 * 30 * 12}>Yearly</MenuItem>
+                    <MenuItem value={1}>Daily</MenuItem>
+                    <MenuItem value={1 * 30}>Monthly</MenuItem>
+                    <MenuItem value={1 * 30 * 12}>Yearly</MenuItem>
                   </Select>
                 </FormControl>
               </div>
             </div>
-            <div className="stake-container reponsive-direction-reverse ">
+            {/* <div className="stake-container reponsive-direction-reverse ">
               <div className="kpd-pool-title">Kupad Price</div>
               <div className="kpd-pool-info kpd-stakview">$ {kupadPrice}</div>
-            </div>
+            </div> */}
             <div className="stake-container reponsive-direction-reverse">
               <div className="kpd-pool-title">APY</div>
               <div className="kpd-pool-info kpd-stakview">
                 {account && parseFloat(toHumanNumber(totalDeposit)) > 0
                   ? (
-                      (5 * displayType) /
+                      (parseFloat(toHumanNumber(rewardsPerBlock)) *
+                        3600 *
+                        24 *
+                        displayType) /
                       3 /
                       parseFloat(toHumanNumber(totalDeposit))
                     ).toFixed(2)
@@ -387,28 +409,33 @@ export default () => {
                     : "0"}{" "}
                   KUPAD
                 </div>
-                <div className="kpd-pool-info">
+                {/* <div className="kpd-pool-info">
                   ${" "}
                   {account
                     ? (
                         parseFloat(toHumanNumber(totalDeposit)) * kupadPrice
                       ).toFixed(5)
                     : "0"}
-                </div>
+                </div> */}
               </div>
             </div>
             <div className="stake-container reponsive-direction-reverse">
-              <div className="kpd-pool-title">Kupad daily reward</div>
+              <div className="kpd-pool-title">{`Kupad ${getFromDisplayType(
+                displayType
+              )} reward`}</div>
               <div className="kpd-stakview reponsive-direction-reverse">
                 <div className="kpd-pool-info">
                   {account
                     ? (
-                        parseFloat(toHumanNumber(rewardsPerBlock)) * 6677
+                        (parseFloat(toHumanNumber(rewardsPerBlock)) / 3) *
+                        3600 *
+                        24 *
+                        displayType
                       ).toFixed(2)
                     : "0"}{" "}
                   KUPAD
                 </div>
-                <div className="kpd-pool-info">
+                {/* <div className="kpd-pool-info">
                   ${" "}
                   {account
                     ? (
@@ -417,7 +444,7 @@ export default () => {
                         kupadPrice
                       ).toFixed(5)
                     : "0"}
-                </div>
+                </div> */}
               </div>
             </div>
           </div>
