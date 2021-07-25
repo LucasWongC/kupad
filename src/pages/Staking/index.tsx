@@ -349,9 +349,7 @@ export default () => {
           </div>
           <div className="divider" />
           <div className="claim-info-container">
-            <div className="kpd-staking-label">
-              {blockNumber - parseFloat(lastUpdateBlock.toString())}
-            </div>
+            <div className="kpd-staking-label">Your KUPAD Rewards</div>
             <div className="kpd-staking-amount-label topSpacing10">
               {account && userInfo !== undefined
                 ? parseFloat(
