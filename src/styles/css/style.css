@@ -961,7 +961,11 @@ input:focus {
 .coming-soon-container {
   width: 100%;
   color: #5162f1;
-  padding-top: 65%;
+  padding-top: 20%;
+  padding-bottom: 20%;
+  text-align: center;
+  font-size: 50px;
+  color: white;
 }
 
 .kpd-staking .input-amounts {
