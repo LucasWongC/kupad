@@ -6,7 +6,7 @@
 02. Global Class
 03. Header Section
 --------------------------------------------------------*/
-@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap');
 
 /* -----------------------------------
     01. General CSS
@@ -19,7 +19,7 @@ html,
 body {
   font-size: 15px;
   color: #fff;
-  font-family: "Poppins", sans-serif;
+  font-family: 'Poppins', sans-serif;
   vertical-align: baseline;
   line-height: 20px;
   background: #ffffff;
@@ -356,7 +356,7 @@ button {
 }
 
 .dropdown-bullet .dropdown-menu > a:before {
-  content: "";
+  content: '';
   position: absolute;
   left: -10px;
   top: 50%;
@@ -371,9 +371,9 @@ button {
   margin-bottom: 1.6rem;
 }
 
-input[type="text"],
-input[type="email"],
-input[type="password"],
+input[type='text'],
+input[type='email'],
+input[type='password'],
 textarea,
 select.form-control {
   border: 1px solid #eee;
@@ -385,9 +385,9 @@ select.form-control {
   outline: 0;
 }
 
-input[type="text"],
-input[type="email"],
-input[type="password"],
+input[type='text'],
+input[type='email'],
+input[type='password'],
 select.form-control {
   font-size: 14px;
   height: 52px;
@@ -411,9 +411,9 @@ input:-webkit-autofill:active {
   -webkit-box-shadow: 0 0 0 30px white inset !important;
 }
 
-input[type="text"]:focus,
-input[type="email"]:focus,
-input[type="password"]:focus,
+input[type='text']:focus,
+input[type='email']:focus,
+input[type='password']:focus,
 textarea:focus,
 select.form-control:focus {
   border-color: #c6f8ff !important;
@@ -616,13 +616,13 @@ body {
 }
 
 body:before {
-  content: "";
+  content: '';
   position: absolute;
   left: 0;
   top: 0;
   width: 100%;
   height: 100%;
-  background-image: url("../images/banner-ovrerlay.svg");
+  background-image: url('../images/banner-ovrerlay.svg');
   background-size: cover;
   z-index: -1;
 }
@@ -644,7 +644,7 @@ body:before {
 }
 
 .kpd-banner-desc .highlight:before {
-  content: "";
+  content: '';
   position: absolute;
   left: 48%;
   top: 0;
@@ -683,14 +683,14 @@ body:before {
 }
 
 .kpd-banner .btn-banner:before {
-  content: "";
+  content: '';
   position: absolute;
   left: 0;
   top: 0;
   width: 100%;
   height: 100%;
   z-index: -1;
-  background-image: url("../images/btn-bg.png");
+  background-image: url('../images/btn-bg.png');
   background-repeat: no-repeat;
   background-size: cover;
 }
@@ -936,30 +936,29 @@ body:before {
   width: 100%;
 }
 .kpd-staking .input-container {
-
   margin-top: 22px;
   flex: 1;
   height: 42px;
   border: 1px solid rgba(255, 255, 255, 0.1);
   box-sizing: border-box;
   border-radius: 20.5px;
-  flex-direction: row-reverse;  
+  flex-direction: row-reverse;
   display: flex;
 }
 .kpd-staking .liquidity-container {
-  flex-direction: row-reverse;  
+  flex-direction: row-reverse;
   display: flex;
 }
-input[type=number]::-webkit-inner-spin-button,
-input[type=number]::-webkit-outer-spin-button {
-    -webkit-appearance: none;
-    margin: 0;
+input[type='number']::-webkit-inner-spin-button,
+input[type='number']::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
 }
-textarea:focus, input:focus{
+textarea:focus,
+input:focus {
   outline: none;
 }
 .kpd-staking .input-amounts {
-
   width: calc(100% - 131px);
   height: 100%;
   background: transparent;
@@ -970,20 +969,20 @@ textarea:focus, input:focus{
   font-weight: 500;
   font-size: 15px;
   line-height: 25px;
-  color: #FFFFFF;
+  color: #ffffff;
   padding-left: 20px;
 }
 .kpd-staking .btn-max {
   width: 32px;
   height: 100%;
-  
+
   font-family: Poppins;
   font-style: normal;
   font-weight: 500;
   font-size: 14px;
   line-height: 24px;
   display: flex;
-  color: #F30069;
+  color: #f30069;
 }
 .kpd-staking .kpd-staking-title {
   font-family: Poppins;
@@ -991,14 +990,13 @@ textarea:focus, input:focus{
   font-weight: 600;
   font-size: 25px;
   line-height: 35px;
-  
 }
 .kpd-staking .kpd-section1-display-title {
   font-family: Poppins;
   font-style: normal;
   font-weight: normal;
   font-size: 15px;
-  line-height: 25px;  
+  line-height: 25px;
   text-align: center;
 
   display: flex;
@@ -1006,7 +1004,6 @@ textarea:focus, input:focus{
   width: 50%;
 }
 .kpd-staking .kpd-section1-display-info {
-
   width: 50%;
   display: flex;
   font-family: Poppins;
@@ -1017,10 +1014,9 @@ textarea:focus, input:focus{
   flex-direction: row-reverse;
   color: #fff;
 
-text-align: center;
+  text-align: center;
 }
 .kpd-staking .kpd-section1-distribution-time {
-
   width: 50%;
   display: flex;
   font-family: Poppins;
@@ -1031,7 +1027,7 @@ text-align: center;
   flex-direction: row-reverse;
   color: #f30069;
 
-text-align: center;
+  text-align: center;
 }
 .kpd-staking .stake-info-container {
   padding-left: 15px;
@@ -1068,7 +1064,7 @@ text-align: center;
   font-weight: 500;
   font-size: 14px;
   line-height: 28px;
-  color: #CDCDCD;
+  color: #cdcdcd;
 }
 .kpd-staking .stake-structure-label {
   font-family: Poppins;
@@ -1076,7 +1072,7 @@ text-align: center;
   font-weight: normal;
   font-size: 12px;
   line-height: 22px;
-  color: #F30069;
+  color: #f30069;
 }
 .kpd-staking .stake-structure-intro {
   font-family: Poppins;
@@ -1084,7 +1080,7 @@ text-align: center;
   font-weight: normal;
   font-size: 12px;
   line-height: 22px;
-  color: #FFF;
+  color: #fff;
 }
 .kpd-staking .kpd-stakview {
   flex-direction: row;
@@ -1106,18 +1102,16 @@ text-align: center;
   align-items: flex-end;
 }
 .kpd-staking .btn-liquidity {
-
-width: 174px;
-height: 47px;
-text-transform: none;
-color: #ffffff;
-border-radius: 21px;
-border: 1px solid rgba(255, 255, 255, 0.1);
-box-sizing: border-box;
-border-radius: 23.5px;
+  width: 174px;
+  height: 47px;
+  text-transform: none;
+  color: #ffffff;
+  border-radius: 21px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-sizing: border-box;
+  border-radius: 23.5px;
 }
 .kpd-staking .btn-buy {
-
   margin-left: 20px;
   margin-right: 30px;
   width: 149px;
@@ -1125,19 +1119,19 @@ border-radius: 23.5px;
 
   text-transform: none;
   color: #ffffff;
-  background: #F30069;
+  background: #f30069;
   border-radius: 21px;
-  }
-  .kpd-staking .btn-buy:hover {
-    margin-left: 20px;
-    margin-right: 30px;
-    width: 149px;
-    height: 47px;
-    text-transform: none;
-    color: #F30069;
-    background: rgba(243, 0, 105, 0.18);
-    border-radius: 21px;
-  }
+}
+.kpd-staking .btn-buy:hover {
+  margin-left: 20px;
+  margin-right: 30px;
+  width: 149px;
+  height: 47px;
+  text-transform: none;
+  color: #f30069;
+  background: rgba(243, 0, 105, 0.18);
+  border-radius: 21px;
+}
 .kpd-staking .stake-btn-container {
   flex-direction: row;
   align-items: center;
@@ -1160,7 +1154,7 @@ border-radius: 23.5px;
   font-style: normal;
   font-weight: 500;
   font-size: 14px;
-  color: #FFFFFF;
+  color: #ffffff;
   line-height: 24px;
   width: 150px;
 }
@@ -1170,7 +1164,7 @@ border-radius: 23.5px;
   font-weight: 600;
   font-size: 18px;
   line-height: 28px;
-  color: #FFFFFF;
+  color: #ffffff;
 }
 .kpd-staking .kpd-staking-card {
   margin-top: 10px;
@@ -1187,16 +1181,15 @@ border-radius: 23.5px;
   backdrop-filter: blur(27px);
 
   border-radius: 8px;
-  
+
   position: relative;
   display: flex;
-  
 }
-.kpd-staking .reponsive-direction{
+.kpd-staking .reponsive-direction {
   flex-direction: row;
   display: flex;
 }
-.kpd-staking .reponsive-direction-reverse{
+.kpd-staking .reponsive-direction-reverse {
   flex-direction: column;
   display: flex;
 }
@@ -1226,10 +1219,9 @@ border-radius: 23.5px;
   align-items: center;
   justify-content: center;
   margin-bottom: 10px;
-  padding:18px;
+  padding: 18px;
 }
 .kpd-staking-card .divider-row {
-
   margin-top: 8px;
   margin-bottom: 8px;
   width: 100%;
@@ -1246,7 +1238,7 @@ border-radius: 23.5px;
   width: 100%;
   height: 42px;
   text-transform: none;
-  color: #F30069;
+  color: #f30069;
   background: rgba(243, 0, 105, 0.18);
   border-radius: 21px;
 }
@@ -1256,14 +1248,14 @@ border-radius: 23.5px;
   height: 42px;
   text-transform: none;
   color: #ffffff;
-  background: #F30069;
+  background: #f30069;
   border-radius: 21px;
 }
 .kpd-staking .btn-stake:hover {
   width: 99px;
   height: 42px;
   text-transform: none;
-  color: #F30069;
+  color: #f30069;
   background: rgba(243, 0, 105, 0.18);
   border-radius: 21px;
 }
@@ -1272,7 +1264,7 @@ border-radius: 23.5px;
   height: 42px;
   text-transform: none;
   color: #ffffff;
-  background: #F30069;
+  background: #f30069;
   border-radius: 21px;
 }
 .kpd-staking .claim-info-container {
@@ -1304,7 +1296,7 @@ border-radius: 23.5px;
   font-style: normal;
   font-weight: normal;
   font-size: 15px;
-  line-height: 25px;  
+  line-height: 25px;
   text-align: center;
   height: 40px;
   display: flex;
@@ -1324,25 +1316,20 @@ border-radius: 23.5px;
 }
 
 .kpd-staking .kpd-about-container {
-  margin : 30px;
+  margin: 30px;
   width: 90%;
 }
 .kpd-staking .kpd-about-title {
+  font-family: Poppins;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 30px;
+  line-height: 40px;
+  /* identical to box height, or 133% */
 
-font-family: Poppins;
-font-style: normal;
-font-weight: 600;
-font-size: 30px;
-line-height: 40px;
-/* identical to box height, or 133% */
-
-
-
-color: #FFFFFF;
+  color: #ffffff;
 }
 .kpd-staking .kpd-about-info {
-
-
   margin-top: 20px;
   font-family: Poppins;
   font-style: normal;
@@ -1350,9 +1337,8 @@ color: #FFFFFF;
   font-size: 13px;
   line-height: 23px;
   /* or 177% */
-  
-  
-  color: #FFFFFF;
+
+  color: #ffffff;
 }
 .kpd-sale .container {
   position: relative;
@@ -1494,7 +1480,7 @@ color: #FFFFFF;
 
 .kpd-sale-details .container {
   position: relative;
-  padding: 150px 15px 100px;
+  padding: 50px 15px 100px;
   display: flex;
   flex-direction: column;
   max-width: 800px;
@@ -1678,7 +1664,13 @@ color: #FFFFFF;
   color: white;
   margin-bottom: 15px;
 }
-
+.kpd-sale-details-token-info .title-mid {
+  font-size: 20px;
+  line-height: 40px;
+  font-weight: 500;
+  color: white;
+  margin-bottom: 15px;
+}
 .kpd-sale-details-token-info .kpd-sale-details-card {
   padding: 16px 30px;
 }
@@ -1733,7 +1725,7 @@ color: #FFFFFF;
   margin: 0;
 }
 
-.kpd-sale-details-card input[type="number"] {
+.kpd-sale-details-card input[type='number'] {
   -moz-appearance: textfield;
 }
 
@@ -1885,6 +1877,9 @@ color: #FFFFFF;
 }
 .topSpacing40 {
   margin-top: 40px;
+}
+.topSpacing100 {
+  margin-top: 100px;
 }
 .padding30 {
   padding: 30px;
