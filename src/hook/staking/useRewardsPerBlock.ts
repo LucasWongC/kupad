@@ -1,26 +1,24 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useCallback } from "react";
 import { BigNumber } from "ethers";
-import { useWeb3React } from "@web3-react/core";
 import useStakingContract from "./useStakingContract";
 import useLastUpdated from "../useLastUpdated";
 
 const useRewardsPerBlock = () => {
-  const { active, account } = useWeb3React();
   const [rewardsPerBlock, setRewardsPerBlock] = useState(BigNumber.from("0"));
   const contract = useStakingContract();
   const { lastUpdated, setLastUpdated } = useLastUpdated();
-  useEffect(() => {
-    const fetchRewardsPerBlockInfo = async () => {
-      if (contract && active && account) {
-        const rewardsPerBlock = await contract.rewardPerBlock();
-        setRewardsPerBlock(rewardsPerBlock);
-      }
-    };
 
-    if (contract && active && account) {
+  const fetchRewardsPerBlockInfo = useCallback(async () => {
+    if (contract) {
+      const rewardsPerBlock = await contract.rewardPerBlock();
+      setRewardsPerBlock(rewardsPerBlock);
+    }
+  }, [contract]);
+  useEffect(() => {
+    if (contract) {
       fetchRewardsPerBlockInfo();
     }
-  }, [contract, account, active, lastUpdated]);
+  }, [contract, lastUpdated, setRewardsPerBlock, fetchRewardsPerBlockInfo]);
 
   return { rewardsPerBlock, refreshUserInfo: setLastUpdated };
 };

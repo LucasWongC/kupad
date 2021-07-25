@@ -1,5 +1,5 @@
 import React, { useCallback, useEffect, useState } from "react";
-
+import { ResultModal, Loading } from "components";
 import useStakingContract from "hook/staking/useStakingContract";
 import useKupadTokenContract from "hook/staking/useKupadTokenContract";
 import useUserInfo from "hook/staking/useUserInfo";
@@ -8,10 +8,13 @@ import useSigner from "hook/useSigner";
 import { useWeb3React } from "@web3-react/core";
 import Logo from "assets/images/logos/favicon.png";
 import PinkArrowRight from "assets/images/pink-arrow-right.svg";
-import useTotalInvest from "hook/useTotalInvest";
-import useIsFinished from "hook/useIsFinished";
+
 import useTotalDeposit from "hook/staking/useTotalDeposit";
 import useRewardsPerBlock from "hook/staking/useRewardsPerBlock";
+import useAccKupadPerShare from "hook/staking/useAccKupadPerShare";
+import useBlockNumberInfo from "hook/staking/useBlockNumberInfo";
+import useLastUpdateBlock from "hook/staking/useLastUpdateBlock";
+
 import { toHumanNumber, toBigNumber } from "utils/formatter";
 import { BigNumber } from "ethers";
 import { presaleTarget, stakingAddress, startTime } from "constants/misc";
@@ -38,6 +41,9 @@ export default () => {
   const { userInfo } = useUserInfo();
   const { totalDeposit } = useTotalDeposit();
   const { rewardsPerBlock } = useRewardsPerBlock();
+  const { accKupadPerShare } = useAccKupadPerShare();
+  const { blockNumber } = useBlockNumberInfo();
+  const { lastUpdateBlock } = useLastUpdateBlock();
   const balance = useKupadBalance();
   const [whitelisted, setWhitelisted] = useState(true);
 
@@ -124,7 +130,9 @@ export default () => {
     }
   };
   const setMax = async () => {
-    setAmount(parseFloat(toHumanNumber(balance)).toFixed(2));
+    setAmount(
+      parseFloat(parseFloat(toHumanNumber(balance)).toFixed(2)).toString()
+    );
   };
   const Unstake = async () => {
     if (signer && contract && whitelisted && tokenContract && userInfo.amount) {
@@ -132,7 +140,7 @@ export default () => {
 
       try {
         const amountBN = toBigNumber(
-          parseFloat(toHumanNumber(userInfo.amount)) - 0.1
+          parseFloat(toHumanNumber(userInfo.amount))
         );
         if (amountBN.isZero()) {
           setErrorMsg("Choose correct amount");
@@ -140,7 +148,7 @@ export default () => {
           try {
             const tx1 = await contract.withdraw(amountBN);
             await tx1.wait(1);
-            setSuccessMsg(`UnStaked ${amount} KUPAD`);
+            setSuccessMsg(`UnStaked ${toHumanNumber(userInfo.amount)} KUPAD`);
           } catch (err) {
             console.error(err);
             setErrorMsg("UnStaked failed");
@@ -185,7 +193,7 @@ export default () => {
               <div className="stake-btn-container">
                 <ul className="kpd-footer-social">
                   <li>
-                    <a href="https://kupadfinance.medium.com/">
+                    <a href="https://kupad.live/">
                       <i className="fa fa-globe" />
                     </a>
                   </li>
@@ -245,7 +253,9 @@ export default () => {
               <div className="tvl-container">
                 <div className="kpd-section1-display-info">
                   {account
-                    ? parseFloat(toHumanNumber(totalDeposit)).toFixed(2)
+                    ? parseFloat(
+                        parseFloat(toHumanNumber(totalDeposit)).toFixed(2)
+                      ).toString()
                     : "0"}{" "}
                   KUPAD
                 </div>
@@ -282,7 +292,11 @@ export default () => {
           <div className="stake-info-container">
             <div className="kpd-staking-label">Your KUPAD Balance</div>
             <div className="kpd-staking-label">
-              {account ? parseFloat(toHumanNumber(balance)).toFixed(2) : "0"}{" "}
+              {account
+                ? parseFloat(
+                    parseFloat(toHumanNumber(balance)).toFixed(2)
+                  ).toString()
+                : "0"}{" "}
               KUPAD
             </div>
             <div className="stake-btn-container">
@@ -295,7 +309,9 @@ export default () => {
             </div>
             <div className="kpd-staking-amount-label">
               {account && userInfo !== undefined
-                ? parseFloat(toHumanNumber(userInfo.amount)).toFixed(2)
+                ? parseFloat(
+                    parseFloat(toHumanNumber(userInfo.amount)).toFixed(2)
+                  ).toString()
                 : "0"}{" "}
               KUPAD
             </div>
@@ -333,10 +349,24 @@ export default () => {
           </div>
           <div className="divider" />
           <div className="claim-info-container">
-            <div className="kpd-staking-label">Your KUPAD rewards</div>
+            <div className="kpd-staking-label">
+              {blockNumber - parseFloat(lastUpdateBlock.toString())}
+            </div>
             <div className="kpd-staking-amount-label topSpacing10">
               {account && userInfo !== undefined
-                ? parseFloat(toHumanNumber(userInfo.pendingRewards)).toFixed(2)
+                ? parseFloat(
+                    parseFloat(
+                      toHumanNumber(
+                        userInfo.amount
+                          .mul(accKupadPerShare)
+                          .mul(
+                            blockNumber - parseFloat(lastUpdateBlock.toString())
+                          )
+                          .div(totalDeposit)
+                          .add(userInfo.pendingRewards)
+                      )
+                    ).toFixed(2)
+                  ).toString()
                 : "0"}{" "}
               KUPAD
             </div>
@@ -389,12 +419,14 @@ export default () => {
               <div className="kpd-pool-info kpd-stakview">
                 {account && parseFloat(toHumanNumber(totalDeposit)) > 0
                   ? (
-                      (parseFloat(toHumanNumber(rewardsPerBlock)) *
+                      ((parseFloat(toHumanNumber(rewardsPerBlock)) *
                         3600 *
                         24 *
-                        displayType) /
-                      3 /
-                      parseFloat(toHumanNumber(totalDeposit))
+                        30 *
+                        12) /
+                        3 /
+                        parseFloat(toHumanNumber(totalDeposit))) *
+                      100
                     ).toFixed(2)
                   : "0"}{" "}
                 %
@@ -405,7 +437,9 @@ export default () => {
               <div className="kpd-stakview reponsive-direction-reverse">
                 <div className="kpd-pool-info">
                   {account
-                    ? parseFloat(toHumanNumber(totalDeposit)).toFixed(2)
+                    ? parseFloat(
+                        parseFloat(toHumanNumber(totalDeposit)).toFixed(2)
+                      ).toString()
                     : "0"}{" "}
                   KUPAD
                 </div>
@@ -426,12 +460,14 @@ export default () => {
               <div className="kpd-stakview reponsive-direction-reverse">
                 <div className="kpd-pool-info">
                   {account
-                    ? (
-                        (parseFloat(toHumanNumber(rewardsPerBlock)) / 3) *
-                        3600 *
-                        24 *
-                        displayType
-                      ).toFixed(2)
+                    ? parseFloat(
+                        (
+                          (parseFloat(toHumanNumber(rewardsPerBlock)) / 3) *
+                          3600 *
+                          24 *
+                          displayType
+                        ).toFixed(2)
+                      ).toString()
                     : "0"}{" "}
                   KUPAD
                 </div>
@@ -471,6 +507,19 @@ export default () => {
           </div>
         </div>
       </div>
+      <Loading isOpen={loading} />
+      <ResultModal
+        isOpen={!!successMsg}
+        title="SUCCESS"
+        message={successMsg}
+        onDismiss={dismissResultModal}
+      />
+      <ResultModal
+        isOpen={!!errorMsg}
+        title="ERROR"
+        message={errorMsg}
+        onDismiss={dismissResultModal}
+      />
     </div>
   );
 };
