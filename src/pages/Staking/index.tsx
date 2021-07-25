@@ -171,10 +171,10 @@ export default () => {
       try {
         const tx1 = await contract.claim();
         await tx1.wait(1);
-        setSuccessMsg(`UnStaked ${amount} KUPAD`);
+        setSuccessMsg(`Claim ${amount} KUPAD`);
       } catch (err) {
         console.error(err);
-        setErrorMsg("UnStaked failed");
+        setErrorMsg("Claim failed");
       }
       setLoading(false);
     }
