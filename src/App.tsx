@@ -6,10 +6,11 @@ import Home from "pages/Home";
 import Sale from "pages/Sale";
 import SaleDetail from "pages/SaleDetail";
 import Staking from "pages/Staking";
-
 import "styles/global.css";
 import { NetworkContextName } from "constants/misc";
 import getLibrary from "utils/getLibrary";
+import ComingSoon from "pages/ComingSoon";
+import KubridgeDetails from "pages/KubridgeDetails";
 
 const Web3ProviderNetwork = createWeb3ReactRoot(NetworkContextName);
 
@@ -22,6 +23,9 @@ const App: React.FC = () => (
           <Route path="/" exact>
             <Home />
           </Route>
+          <Route path="/sale/kubridgedetails" exact>
+            <KubridgeDetails />
+          </Route>
           <Route path="/sale" exact>
             <Sale />
           </Route>
@@ -30,6 +34,9 @@ const App: React.FC = () => (
           </Route>
           <Route path="/staking" exact>
             <Staking />
+          </Route>
+          <Route path="/coming-soon" exact>
+            <ComingSoon />
           </Route>
         </Switch>
         <Footer />

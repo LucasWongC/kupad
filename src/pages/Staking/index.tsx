@@ -230,17 +230,17 @@ export default () => {
             <div className="stake-container">
               <div className="kpd-section1-display-title">Start in</div>
               <div className="kpd-section1-display-info">
-                Jun 22, 2021 5:00 PM
+                July 25, 2021 2:00 UTC
               </div>
             </div>
             <div className="divider-row" />
-            <div className="stake-container">
+            {/* <div className="stake-container">
               <div className="kpd-section1-display-title">End in</div>
               <div className="kpd-section1-display-info">
                 Jun 22, 2022 5:00 PM
               </div>
-            </div>
-            <div className="divider-row" />
+            </div> */}
+            {/* <div className="divider-row" /> */}
             <div className="stake-container">
               <div className="kpd-section1-display-title">
                 Distribution time

@@ -138,14 +138,14 @@ export default () => {
             <span className="up-coming">Active</span>
           )}
           {startTime <= Date.now() / 1000 && isFinished && (
-            <span className="up-coming">Ended</span>
+            <span className="up-coming">Up-Coming</span>
           )}
           <div className="info">
             <div className="logo-container">
-              <img src={KupadLogo} alt="Kupad Logo" />
+              <img src={Logo} alt="Kupad Logo" />
             </div>
             <div className="meta">
-              <p className="title">KUPAD</p>
+              <p className="title">Kubridge</p>
               <ul className="kpd-footer-social">
                 <li>
                   <a href="https://kubridge.finance/">
@@ -178,11 +178,11 @@ export default () => {
           <div className="status">
             <div className="item">
               <span className="desc">Start in</span>
-              <span className="value">Jun 22, 2021 5:00 PM</span>
+              <span className="value">TBA</span>
             </div>
             <div className="item">
               <span className="desc">Max Allocation</span>
-              <span className="value">39.85 / 39.85 KCS</span>
+              <span className="value">TBA</span>
             </div>
             {active && account && (
               <div className="item">
@@ -192,27 +192,18 @@ export default () => {
             )}
             <div className="item">
               <span className="desc">No of participants</span>
-              <span className="value">100</span>
+              <span className="value">TBA</span>
             </div>
             <div className="item no-border">
               <span className="desc">Access</span>
               <span className="value">Whitelist</span>
             </div>
-            <span className="raise-amount">
-              {toHumanNumber(totalInvest)}/{toHumanNumber(presaleTarget)} KCS
-            </span>
+            <span className="raise-amount">0.0 / 0.0 KCS</span>
             <div className="total-progress">
               <div
                 className="progress"
                 style={{
-                  width: `${
-                    Number(
-                      totalInvest
-                        .mul(BigNumber.from("10000"))
-                        .div(presaleTarget)
-                        .toNumber()
-                    ) / 100
-                  }%`,
+                  width: `${Number(0) / 100}%`,
                 }}
               />
             </div>
@@ -297,11 +288,11 @@ export default () => {
           <div className="kpd-sale-details-card">
             <div className="item">
               <span className="desc">Token Symbol</span>
-              <span className="value">KUPAD</span>
+              <span className="value">TBA</span>
             </div>
             <div className="item">
               <span className="desc">Token Name</span>
-              <span className="value">KUPAD Finance</span>
+              <span className="value">TBA</span>
             </div>
             <div className="item">
               <span className="desc">Access Type</span>
@@ -322,20 +313,17 @@ export default () => {
 
         <div className="kpd-sale-details-token-info">
           <h3 className="title">About project</h3>
+          <h5 className="title-mid">What is Kubridge Finance?</h5>
           <span className="desc">
-            It is a long established fact that a reader will be distracted by
-            the readable content of a page when looking at its layout. The point
-            of using Lorem Ipsum is that it has a more-or-less normal
-            distribution of letters, as opposed to using &apos;Content here,
-            content here&apos;, making it look like
+            The first cross-chain bridge on the Kucoin Community Chain(KCC).
+            KuBridge is a revolution project unlike any that has been seen in
+            the Kucoin Community Chain because it has the potential to
+            seamlessly “Merge” KCC with other blockchains and this is essential
+            for the growth and development of Blockchain and decentralization.
           </span>
         </div>
       </div>
-      <Loading isOpen={loading} />
-      <ConnectWalletModal
-        isOpen={showConnectWalletModal}
-        onDismiss={() => setShowConnectWalletModal(false)}
-      />
+
       <ResultModal
         isOpen={!!successMsg}
         title="SUCCESS"

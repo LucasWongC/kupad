@@ -5,6 +5,7 @@ import useIsFinished from "hook/useIsFinished";
 import { toHumanNumber } from "utils/formatter";
 import { BigNumber } from "ethers";
 import { presaleTarget, startTime } from "constants/misc";
+import KubridgeLogo from "assets/images/logos/kubridge.png";
 
 export default () => {
   const { totalInvest } = useTotalInvest();
@@ -14,6 +15,61 @@ export default () => {
     <div className="kpd-sale">
       <div className="container">
         <h3 className="kpd-sale-title">Kupad Token Sale</h3>
+        <div className="kpd-sale-card">
+          {startTime > Date.now() / 1000 && (
+            <span className="up-coming">Up-Coming</span>
+          )}
+          {startTime <= Date.now() / 1000 && !isFinished && (
+            <span className="up-coming">Active</span>
+          )}
+          {startTime <= Date.now() / 1000 && isFinished && (
+            <span className="up-coming">Up-Coming</span>
+          )}
+          <div className="info">
+            <div className="logo-container">
+              <img src={KubridgeLogo} alt="Kupad Logo" />
+            </div>
+            <p className="title">Kubridge Token Sale</p>
+            <span className="desc">
+              KuBridge is a revolution project unlike any that has been seen in
+              the Kucoin Community Chain because it has the potential to
+              seamlessly “Merge” KCC with other blockchains and this is
+              essential for the growth and development of Blockchain and
+              decentralization.
+            </span>
+          </div>
+          <div className="status">
+            <span className="raise-title">Raise Amount</span>
+            <span className="raise-amount">0.0 / 0.0 KCS</span>
+            <div className="total-progress">
+              <div
+                className="progress"
+                style={{
+                  width: `${Number(0) / 100}%`,
+                }}
+              />
+            </div>
+            <span className="desc">
+              Minimum Goal: <span className="value">TBA</span>
+            </span>
+            <div className="access-info">
+              <span className="desc">
+                Opening: <span className="value">TBA</span>
+              </span>
+              <span className="desc">
+                Access <span className="value">Whitelist</span>
+              </span>
+            </div>
+          </div>
+          <div>
+            <a href="/sale/kubridgedetails" className="btn-details">
+              Details <img src={PinkArrowRight} alt="" />
+            </a>
+          </div>
+        </div>
+
+        <div className="topSpacing40" />
+
         <div className="kpd-sale-card">
           {startTime > Date.now() / 1000 && (
             <span className="up-coming">Up-Coming</span>

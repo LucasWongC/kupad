@@ -53,7 +53,7 @@ export default () => {
               </li>
               <li>
                 {/* <a href="coming-soon.html">Governance</a> */}
-                <a href="/">
+                <a href="/coming-soon">
                   Governance <span className="badge">BETA COMING</span>
                 </a>
               </li>

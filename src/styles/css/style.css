@@ -958,6 +958,12 @@ textarea:focus,
 input:focus {
   outline: none;
 }
+.coming-soon-container {
+  width: 100%;
+  color: #5162f1;
+  padding-top: 65%;
+}
+
 .kpd-staking .input-amounts {
   width: calc(100% - 131px);
   height: 100%;
