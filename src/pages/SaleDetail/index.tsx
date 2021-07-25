@@ -9,7 +9,7 @@ import usePresaleContract from "hook/usePresaleContract";
 import useClaimed from "hook/useClaimed";
 import useParticipants from "hook/useParticipants";
 import useSigner from "hook/useSigner";
-import Logo from "assets/images/logos/favicon.png";
+import Logo from "assets/images/logos/kubridge.png";
 import { toBigNumber, toHumanNumber } from "utils/formatter";
 import {
   hardCap,
@@ -142,20 +142,25 @@ export default () => {
               <img src={Logo} alt="Kupad Logo" />
             </div>
             <div className="meta">
-              <p className="title">KUPAD</p>
+              <p className="title">Kubridge</p>
               <ul className="kpd-footer-social">
                 <li>
-                  <a href="https://t.me/KUPADKCS">
+                  <a href="https://kubridge.finance/">
+                    <i className="fa fa-globe" />
+                  </a>
+                </li>
+                <li>
+                  <a href="https://t.me/KuBridgeKcc">
                     <i className="fas fa-paper-plane" />
                   </a>
                 </li>
                 <li>
-                  <a href="https://twitter.com/kupad_finance">
+                  <a href="https://twitter.com/KuBridgeKCC">
                     <i className="fab fa-twitter" />
                   </a>
                 </li>
                 <li>
-                  <a href="https://kupadfinance.medium.com/">
+                  <a href="https://twitter.com/KuBridgeKCC">
                     <i className="fab fa-medium-m" />
                   </a>
                 </li>
@@ -170,11 +175,11 @@ export default () => {
           <div className="status">
             <div className="item">
               <span className="desc">Start in</span>
-              <span className="value">Jul 12, 2021 1:00 PM UTC</span>
+              <span className="value">TBA</span>
             </div>
             <div className="item">
               <span className="desc">Max Allocation</span>
-              <span className="value">39.85 KCS</span>
+              <span className="value">TBA</span>
             </div>
             {active && account && (
               <div className="item">
@@ -184,7 +189,7 @@ export default () => {
             )}
             <div className="item">
               <span className="desc">No of participants</span>
-              <span className="value">100</span>
+              <span className="value">TBA</span>
             </div>
             <div className="item no-border">
               <span className="desc">Access</span>

@@ -52,10 +52,15 @@ export default () => {
                 </a>
               </li>
               <li>
-                <a href="coming-soon.html">Governance</a>
+                {/* <a href="coming-soon.html">Governance</a> */}
+                <a href="/">
+                  Governance <span className="badge">BETA COMING</span>
+                </a>
               </li>
               <li>
-                <a href="coming-soon.html">Apply IDO</a>
+                <a href="https://docs.google.com/forms/d/e/1FAIpQLSfTcZVGwjUqvtfeD1nJDupEH71ZIN6gt-Xsxpq90CIoYUCTCQ/viewform">
+                  Apply IDO
+                </a>
               </li>
               {/* <li>
                 <a href="coming-soon.html">
