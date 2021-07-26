@@ -178,7 +178,7 @@ export default () => {
           <div className="status">
             <div className="item">
               <span className="desc">Start in</span>
-              <span className="value">Jun 22, 2021 5:00 PM</span>
+              <span className="value">July 25, 2021 2:00 UTC</span>
             </div>
             <div className="item">
               <span className="desc">Max Allocation</span>
@@ -297,7 +297,7 @@ export default () => {
           <div className="kpd-sale-details-card">
             <div className="item">
               <span className="desc">Token Symbol</span>
-              <span className="value">KUPAD</span>
+              <span className="value">KKPAD</span>
             </div>
             <div className="item">
               <span className="desc">Token Name</span>

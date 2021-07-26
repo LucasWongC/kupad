@@ -959,13 +959,16 @@ input:focus {
   outline: none;
 }
 .coming-soon-container {
-  width: 100%;
+  /* /* width: 100%; */
+height:80vh;
   color: #5162f1;
-  padding-top: 20%;
-  padding-bottom: 20%;
   text-align: center;
+  line-height: 60px;
   font-size: 50px;
   color: white;
+  align-items: center;
+  justify-content: center;
+  display: flex;
 }
 
 .kpd-staking .input-amounts {

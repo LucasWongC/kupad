@@ -148,7 +148,7 @@ export default () => {
           try {
             const tx1 = await contract.withdraw(amountBN);
             await tx1.wait(1);
-            setSuccessMsg(`UnStaked ${toHumanNumber(userInfo.amount)} KUPAD`);
+            setSuccessMsg(`UnStaked ${toHumanNumber(userInfo.amount)} KKPAD`);
           } catch (err) {
             console.error(err);
             setErrorMsg("UnStaked failed");
@@ -171,7 +171,7 @@ export default () => {
       try {
         const tx1 = await contract.claim();
         await tx1.wait(1);
-        setSuccessMsg(`Claim ${amount} KUPAD`);
+        setSuccessMsg(`Claim ${amount} KKPAD`);
       } catch (err) {
         console.error(err);
         setErrorMsg("Claim failed");
@@ -257,7 +257,7 @@ export default () => {
                         parseFloat(toHumanNumber(totalDeposit)).toFixed(2)
                       ).toString()
                     : "0"}{" "}
-                  KUPAD
+                  KKPAD
                 </div>
                 {/* <div className="kpd-section1-display-info">
                   ${" "}
@@ -283,24 +283,24 @@ export default () => {
             <div className="stake-info-container leftSpacing10">
               <div className="kpd-staking-title">KUPAD</div>
               <div className="stake-btn-container">
-                <div className="stake-btn">Deposit KUPAD</div>
-                <div className="stake-btn leftSpacing10">Earn KUPAD</div>
+                <div className="stake-btn">Deposit KKPAD</div>
+                <div className="stake-btn leftSpacing10">Earn KKPAD</div>
               </div>
             </div>
           </div>
           <div className="divider" />
           <div className="stake-info-container">
-            <div className="kpd-staking-label">Your KUPAD Balance</div>
+            <div className="kpd-staking-label">Your KKPAD Balance</div>
             <div className="kpd-staking-label">
               {account
                 ? parseFloat(
                     parseFloat(toHumanNumber(balance)).toFixed(2)
                   ).toString()
                 : "0"}{" "}
-              KUPAD
+              KKPAD
             </div>
             <div className="stake-btn-container">
-              <div className="kpd-staking-label">Your KUPAD staked</div>
+              <div className="kpd-staking-label">Your KKPAD staked</div>
               <div className="kpd-staking-display-button">
                 <Button className="btn-stake" onClick={Unstake}>
                   Unstake
@@ -313,7 +313,7 @@ export default () => {
                     parseFloat(toHumanNumber(userInfo.amount)).toFixed(2)
                   ).toString()
                 : "0"}{" "}
-              KUPAD
+              KKPAD
             </div>
             {/* <div className="staked-usd-label">
               ${" "}
@@ -349,24 +349,28 @@ export default () => {
           </div>
           <div className="divider" />
           <div className="claim-info-container">
-            <div className="kpd-staking-label">Your KUPAD Rewards</div>
+            <div className="kpd-staking-label">Your KKPAD Rewards</div>
             <div className="kpd-staking-amount-label topSpacing10">
               {account && userInfo !== undefined
                 ? parseFloat(
                     parseFloat(
                       toHumanNumber(
-                        userInfo.amount
-                          .mul(accKupadPerShare)
+                        rewardsPerBlock
                           .mul(
                             blockNumber - parseFloat(lastUpdateBlock.toString())
                           )
+                          .mul(1e12)
                           .div(totalDeposit)
+                          .add(accKupadPerShare)
+                          .mul(userInfo.amount)
+                          .div(1e12)
+                          .sub(userInfo.rewardDebt)
                           .add(userInfo.pendingRewards)
                       )
                     ).toFixed(2)
                   ).toString()
                 : "0"}{" "}
-              KUPAD
+              KKPAD
             </div>
             {/* <div className="staked-usd-label topSpacing10">
               ${" "}
@@ -431,7 +435,7 @@ export default () => {
               </div>
             </div>
             <div className="stake-container reponsive-direction-reverse">
-              <div className="kpd-pool-title">Kupad staked</div>
+              <div className="kpd-pool-title">KKPAD staked</div>
               <div className="kpd-stakview reponsive-direction-reverse">
                 <div className="kpd-pool-info">
                   {account
@@ -439,7 +443,7 @@ export default () => {
                         parseFloat(toHumanNumber(totalDeposit)).toFixed(2)
                       ).toString()
                     : "0"}{" "}
-                  KUPAD
+                  KKPAD
                 </div>
                 {/* <div className="kpd-pool-info">
                   ${" "}
@@ -452,7 +456,7 @@ export default () => {
               </div>
             </div>
             <div className="stake-container reponsive-direction-reverse">
-              <div className="kpd-pool-title">{`Kupad ${getFromDisplayType(
+              <div className="kpd-pool-title">{`KKPAD ${getFromDisplayType(
                 displayType
               )} reward`}</div>
               <div className="kpd-stakview reponsive-direction-reverse">
@@ -467,7 +471,7 @@ export default () => {
                         ).toFixed(2)
                       ).toString()
                     : "0"}{" "}
-                  KUPAD
+                  KKPAD
                 </div>
                 {/* <div className="kpd-pool-info">
                   ${" "}
@@ -489,7 +493,7 @@ export default () => {
 
           <div className="liquidity-container topSpacing20">
             <Button className="btn-buy" onClick={openTab}>
-              Buy KUPAD
+              Buy KKPAD
             </Button>
             <Button className="btn-liquidity">+ Add Liquidity</Button>
           </div>
