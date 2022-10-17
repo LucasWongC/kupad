@@ -48,7 +48,12 @@
       }
     ],
     "import/no-extraneous-dependencies": "off",
-    "prettier/prettier": "error",
+    "prettier/prettier": [
+      "error",
+      {
+        "endOfLine": "auto"
+      }
+    ],
     "jsx-a11y/no-noninteractive-tabindex": "off",
     "jsx-a11y/tabindex-no-positive": "off",
     "@typescript-eslint/explicit-module-boundary-types": "off",
