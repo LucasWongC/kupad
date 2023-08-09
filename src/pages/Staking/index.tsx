@@ -1,14 +1,23 @@
 import React, { useCallback, useEffect, useState } from "react";
 import { BigNumber } from "ethers";
+import { useWeb3React } from "@web3-react/core";
+import { Button } from "@material-ui/core";
+import { userInfo } from "os";
+import FormControl from "@material-ui/core/FormControl";
+import Select from "@material-ui/core/Select";
+import MenuItem from "@material-ui/core/MenuItem";
+import FormHelperText from "@material-ui/core/FormHelperText";
+import { makeStyles } from "@material-ui/core/styles";
+import { event } from "jquery";
+
+import Logo from "assets/images/logos/favicon.png";
+import PinkArrowRight from "assets/images/pink-arrow-right.svg";
+
 import useStakingContract from "hook/staking/useStakingContract";
 import useKupadTokenContract from "hook/staking/useKupadTokenContract";
 import useUserInfo from "hook/staking/useUserInfo";
 import useKupadBalance from "hook/staking/useKupadBalance";
 import useSigner from "hook/useSigner";
-import { useWeb3React } from "@web3-react/core";
-import Logo from "assets/images/logos/favicon.png";
-import PinkArrowRight from "assets/images/pink-arrow-right.svg";
-
 import useTotalDeposit from "hook/staking/useTotalDeposit";
 import useRewardsPerBlock from "hook/staking/useRewardsPerBlock";
 import useAccKupadPerShare from "hook/staking/useAccKupadPerShare";
@@ -19,15 +28,7 @@ import { toHumanNumber, toBigNumber } from "utils/formatter";
 
 import { ResultModal, Loading } from "components";
 import { presaleTarget, stakingAddress, startTime } from "constants/misc";
-import { Button } from "@material-ui/core";
-import { userInfo } from "os";
 
-import FormControl from "@material-ui/core/FormControl";
-import Select from "@material-ui/core/Select";
-import MenuItem from "@material-ui/core/MenuItem";
-import FormHelperText from "@material-ui/core/FormHelperText";
-import { makeStyles } from "@material-ui/core/styles";
-import { event } from "jquery";
 
 export default () => {
   const { active, account, deactivate } = useWeb3React();

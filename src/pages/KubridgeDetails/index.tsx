@@ -1,5 +1,5 @@
 import { useCallback, useEffect, useState } from "react";
-
+import { BigNumber } from "ethers";
 import { useWeb3React } from "@web3-react/core";
 import useTotalInvest from "hook/useTotalInvest";
 import useInvested from "hook/useInvested";
@@ -20,7 +20,6 @@ import {
   startTime,
 } from "constants/misc";
 import { ConnectWalletModal, ResultModal, Loading } from "components";
-import { BigNumber } from "ethers";
 import whitelist from "constants/whitelist";
 // import Reddit from "assets/images/reddit.svg";
 
