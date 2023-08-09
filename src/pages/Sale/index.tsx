@@ -1,9 +1,10 @@
+import { BigNumber } from "ethers";
 import Logo from "assets/images/logos/favicon.png";
 import PinkArrowRight from "assets/images/pink-arrow-right.svg";
 import useTotalInvest from "hook/useTotalInvest";
 import useIsFinished from "hook/useIsFinished";
 import { toHumanNumber } from "utils/formatter";
-import { BigNumber } from "ethers";
+
 import { presaleTarget, startTime } from "constants/misc";
 import KubridgeLogo from "assets/images/logos/kubridge.png";
 

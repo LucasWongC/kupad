@@ -1,7 +1,7 @@
 import { useCallback, useState, useRef } from "react";
 import { useWeb3React } from "@web3-react/core";
-import { ConnectWalletModal } from "components";
 import $ from "jquery";
+import { ConnectWalletModal } from "components";
 import Logo from "assets/images/logos/logo-white.svg";
 
 export default () => {

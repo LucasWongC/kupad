@@ -1,5 +1,5 @@
 import React, { useCallback, useEffect, useState } from "react";
-import { ResultModal, Loading } from "components";
+import { BigNumber } from "ethers";
 import useStakingContract from "hook/staking/useStakingContract";
 import useKupadTokenContract from "hook/staking/useKupadTokenContract";
 import useUserInfo from "hook/staking/useUserInfo";
@@ -16,7 +16,8 @@ import useBlockNumberInfo from "hook/staking/useBlockNumberInfo";
 import useLastUpdateBlock from "hook/staking/useLastUpdateBlock";
 
 import { toHumanNumber, toBigNumber } from "utils/formatter";
-import { BigNumber } from "ethers";
+
+import { ResultModal, Loading } from "components";
 import { presaleTarget, stakingAddress, startTime } from "constants/misc";
 import { Button } from "@material-ui/core";
 import { userInfo } from "os";
