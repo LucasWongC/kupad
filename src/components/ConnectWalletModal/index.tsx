@@ -49,7 +49,7 @@ const ConnectWalletModal = ({ isOpen, onDismiss }: Props) => {
       // if the connector is walletconnect and the user has already tried to connect, manually reset the connector
       if (
         connector instanceof WalletConnectConnector &&
-        connector.walletConnectProvider?.wc?.uri
+        connector.walletConnectProvider?.connector?.uri
       ) {
         // eslint-disable-next-line no-param-reassign
         connector.walletConnectProvider = undefined;
