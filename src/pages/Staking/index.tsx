@@ -2,7 +2,6 @@ import React, { useCallback, useEffect, useState } from "react";
 import { BigNumber } from "ethers";
 import { useWeb3React } from "@web3-react/core";
 import { Button } from "@material-ui/core";
-import { userInfo } from "os";
 import FormControl from "@material-ui/core/FormControl";
 import Select from "@material-ui/core/Select";
 import MenuItem from "@material-ui/core/MenuItem";
@@ -28,7 +27,6 @@ import { toHumanNumber, toBigNumber } from "utils/formatter";
 
 import { ResultModal, Loading } from "components";
 import { presaleTarget, stakingAddress, startTime } from "constants/misc";
-
 
 export default () => {
   const { active, account, deactivate } = useWeb3React();
