@@ -71,12 +71,12 @@ export default () => {
     },
   }));
   const classes = useStyles();
-  function openTab() {
+  const openTab = () => {
     window.open(
       "https://koffeeswap.exchange/#/swap?outputCurrency=0x627f63299d9df3d4e22132932da577bb08ca0988"
     );
   }
-  function openKCC() {
+  const openKCC = () => {
     window.open(
       "https://explorer.kcc.io/en/address/0x91d42458bef7e904af19dcc730abff40862bbaf0"
     );
